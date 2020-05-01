@@ -16,12 +16,10 @@ body {
   display: flex;
   flex-wrap: wrap;
 }
-.flexitem{
-  width: 24%;
-  justify-content: space-around;
-}
 
 .button {
+    width: 24%;
+    justify-content: space-around;
     position: relative;
     display: inline-block;
     /* padding: 0.25em 0.5em; */
@@ -38,12 +36,12 @@ body {
     text-shadow: 0 1px 0 rgba(0,0,0,0.2);
 }
 
-.main .button:hover{
+#main .button:hover{
     /* border: solid 0.5vw red; */
     padding: 1px;
     padding-left : -webkit-calc(1px + 1rem - 0.2rem) ;
     padding-left : calc(1px + 1rem - 0.2rem) ;
-    border: solid 0.2rem #da0f0f;/*線色*/
+    border: solid 0.2rem #0f7fda;/*線色*/
 }
 
 .ノーマル{
@@ -118,6 +116,14 @@ body {
     background: rgb(222, 75, 100);/*色*/
 }
 
-.result .button{
+
+.transparecy{
     opacity: 0.1;
+}
+
+.select {
+    padding: 1px;
+    padding-left : -webkit-calc(1px + 1rem - 0.2rem) ;
+    padding-left : calc(1px + 1rem - 0.2rem) ;
+    border: solid 0.2rem rgb(255, 0, 0);/*線色*/
 }
