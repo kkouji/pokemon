@@ -36,13 +36,12 @@ body {
     text-shadow: 0 1px 0 rgba(0,0,0,0.2);
 }
 
-#main .button:hover{
-    /* border: solid 0.5vw red; */
+/* #main .button:hover{
     padding: 1px;
     padding-left : -webkit-calc(1px + 1rem - 0.2rem) ;
     padding-left : calc(1px + 1rem - 0.2rem) ;
-    border: solid 0.2rem #0f7fda;/*線色*/
-}
+    border: solid 0.2rem #0f7fda;
+} */
 
 .ノーマル{
     background: rgb(128, 128, 128);/*色*/
