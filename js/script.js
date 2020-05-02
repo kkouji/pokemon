@@ -37,12 +37,24 @@ for (var i = 0 ; i < btn_main.length ; i++) {
 
 ////// functions //////
 function btnAction(btnDOM, defense_ID) {
-    btnDOM.addEventListener("click", function () {
+    btnDOM.addEventListener("click", function (e) {
         this.classList.toggle('select');
-        // btn_result[defense_ID].classList.toggle('transparecy');
-        for (var j = 0 ; j < effect_table[defense_ID].length ; j++) {
-            if(effect_table[j][defense_ID] > 1){
-                btn_result[j].classList.toggle('transparecy');
+        var select_num = document.getElementById('main').getElementsByClassName('select').length;
+        console.log(select_num)
+        if(select_num > 2){
+            alert("えらぶ　かずを　へらしてね");
+            this.classList.toggle('select');
+            return false;
+        }else if (select_num == 2) {
+            //TODO:２種類選ばれたときの処理
+        }else if (select_num == 1) {
+            for (var j = 0 ; j < effect_table[defense_ID].length ; j++) {
+                if(effect_table[j][defense_ID] == 2){
+                    btn_result[j].insertAdjacentHTML('beforeend', '<b>○</b>');
+                    btn_result[j].classList.toggle('transparecy');//TODO:どうするかのポリシをきめる。
+                }else{
+                    //TODO:どうするかのポリシをきめる。
+                }
             }
         }
     })
