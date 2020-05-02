@@ -31,15 +31,20 @@ var btn_result = div_result.getElementsByClassName('button');
 
 
 // ボタンの個数分ループ
-for (var i = btn_main.length - 1; i >= 0; i--) {
+for (var i = 0 ; i < btn_main.length ; i++) {
     btnAction(btn_main[i],i);
 }
 
 ////// functions //////
-function btnAction(btnDOM, btnId) {
+function btnAction(btnDOM, defense_ID) {
     btnDOM.addEventListener("click", function () {
         this.classList.toggle('select');
-        btn_result[btnId].classList.toggle('transparecy');
+        // btn_result[defense_ID].classList.toggle('transparecy');
+        for (var j = 0 ; j < effect_table[defense_ID].length ; j++) {
+            if(effect_table[j][defense_ID] > 1){
+                btn_result[j].classList.toggle('transparecy');
+            }
+        }
     })
 }
 
