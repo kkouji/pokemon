@@ -41,16 +41,21 @@ function btnAction(btnDOM, defense_ID) {
         this.classList.toggle('select');
         var select_num = document.getElementById('main').getElementsByClassName('select').length;
         if(select_num > 2){
-            alert("えらぶ　かずを　へらしてね");
             this.classList.toggle('select');
             return false;
-        }else if (select_num == 2) {
-            //TODO:２種類選ばれたときの処理
+        }else if (select_num == 2) { //２つタイプが選ばれたときの処理。
             var select_list =  document.getElementById('main').getElementsByClassName('select');
             var array_btn_main = btn_main;
             array_btn_main = [].slice.call(array_btn_main);
             var select_index0 = array_btn_main.indexOf(select_list[0]);
             var select_index1 = array_btn_main.indexOf(select_list[1]);
+
+            // 選択されていないボタンを薄くする。
+            for (var i = 0 ; i < btn_main.length ; i++) {
+                btn_main[i].classList.add('transparecy');
+            }
+            btn_main[select_index0].classList.remove('transparecy');
+            btn_main[select_index1].classList.remove('transparecy');
 
             for (var j = 0 ; j < effect_table[defense_ID].length ; j++) { // タイプを探索する。
                 var damage = effect_table[j][select_index0] * effect_table[j][select_index1];
@@ -72,7 +77,13 @@ function btnAction(btnDOM, defense_ID) {
                     alert("Something wrong. Undefined damage data.");
                 }
             }
-        }else if (select_num == 1) {// 一つだけタイプ選ばれたときの処理。
+
+        }else if (select_num == 1) {// 一つだけタイプが選ばれたときの処理。
+            // 選択ボタンをすべて表示する。
+            for (var i = 0 ; i < btn_main.length ; i++) {
+                btn_main[i].classList.remove('transparecy');
+            }
+
             for (var j = 0 ; j < effect_table[defense_ID].length ; j++) { // タイプを探索する。
                 btn_result[j].textContent = type_list[j];
                 btn_result[j].classList.remove('transparecy');
