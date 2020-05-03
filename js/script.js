@@ -33,18 +33,15 @@ var btn_main = document.getElementById('main').getElementsByClassName('button');
 //result buttonのリストを取得。
 var btn_result = document.getElementById('result').getElementsByClassName('button');
 
-////// manifestの更新 //////
-
-var cache = window.applicationCache;
-cache.addEventListener("updateready", function() {
-    if (confirm('アプリケーションの新しいバージョンが利用可能です。更新しますか？')) {
-        cache.swapCache();
-        location.reload();
+if (navigator.serviceWorker) {
+  //Service Workerのインストール
+  navigator.serviceWorker.register('./service-worker.js', { scope: '.' });
+  //マニュフェストに変更があれば、Service Worker側でリソースの再キャッシュを行う
+    if (navigator.onLine) {
+      fetch("/pokemon.appcache");
     }
-});
-if (navigator.onLine) {
-    cache.update();
-}
+  }
+
 
 /////// main //////
 
