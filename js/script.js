@@ -1,4 +1,7 @@
 
+
+
+
 // タイプリスト。文字列を初期化するときなどに使う。
 const type_list = ["ノーマル","ほのお　","みず　　","でんき　","くさ　　","こおり　","かくとう","どく　　","じめん　","ひこう　","エスパー","むし　　","いわ　　","ゴースト","ドラゴン","あく　　","はがね　","フェアリ"];
 
@@ -29,6 +32,21 @@ const effect_table = [
 var btn_main = document.getElementById('main').getElementsByClassName('button');
 //result buttonのリストを取得。
 var btn_result = document.getElementById('result').getElementsByClassName('button');
+
+////// manifestの更新 //////
+
+var cache = window.applicationCache;
+cache.addEventListener("updateready", function() {
+    if (confirm('アプリケーションの新しいバージョンが利用可能です。更新しますか？')) {
+        cache.swapCache();
+        location.reload();
+    }
+});
+if (navigator.onLine) {
+    cache.update();
+}
+
+/////// main //////
 
 // ボタンの個数分ループ
 for (var i = 0 ; i < btn_main.length ; i++) {
