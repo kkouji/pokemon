@@ -15,17 +15,18 @@ body {
 .flexcontainer{
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-between;
 }
 
 .button {
-    width: 24%;
-    justify-content: space-around;
+    width: 32%;
+    height: 5vh;
+    line-height: 5vh;
     position: relative;
     display: inline-block;
     /* padding: 0.25em 0.5em; */
-    margin: 2px 2px;
-    padding: 0.2rem;
-    padding-left: 1rem;
+    margin: 0.5% 0px;
+    text-align: center;
     text-decoration: none;
     color: white;/*色*/
     background: #03A9F4;/*色*/
@@ -121,8 +122,15 @@ body {
 }
 
 .select {
-    padding: 1px;
-    padding-left : -webkit-calc(1px + 1rem - 0.2rem) ;
-    padding-left : calc(1px + 1rem - 0.2rem) ;
+
+    width: -webkit-calc(32% - 0.2rem * 2 + 1px * 2);
+    width: calc        (32% - 0.2rem * 2 + 1px * 2);
+
+    height: -webkit-calc(5vh - 0.2rem * 2 + 1px * 2);
+    height: calc        (5vh - 0.2rem * 2 + 1px * 2);
+
+    line-height: -webkit-calc(5vh - 0.2rem * 2 + 1px * 2);
+    line-height: calc        (5vh - 0.2rem * 2 + 1px * 2);
+
     border: solid 0.2rem rgb(0, 225, 255);/*線色*/
 }
