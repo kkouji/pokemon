@@ -41,7 +41,7 @@ for (var i = 0 ; i < btn_main.length ; i++) {
 btnReset(btn_reset[0]);
 
 ////// functions //////
-function btnAction(btnDOM, defense_ID) {
+function btnAction(btnDOM) {
     btnDOM.addEventListener("click", function () {
         this.classList.toggle('select');
         var select_num = document.getElementById('main').getElementsByClassName('select').length;
@@ -62,7 +62,7 @@ function btnAction(btnDOM, defense_ID) {
             btn_main[select_index0].classList.remove('transparecy');
             btn_main[select_index1].classList.remove('transparecy');
 
-            for (var j = 0 ; j < effect_table[defense_ID].length ; j++) { // タイプを探索する。
+            for (var j = 0 ; j < effect_table[0].length ; j++) { // タイプを探索する。
                 var damage = effect_table[j][select_index0] * effect_table[j][select_index1];
                 btn_result[j].textContent = type_list[j];
                 btn_result[j].classList.remove('transparecy');
@@ -89,16 +89,21 @@ function btnAction(btnDOM, defense_ID) {
                 btn_main[i].classList.remove('transparecy');
             }
 
-            for (var j = 0 ; j < effect_table[defense_ID].length ; j++) { // タイプを探索する。
+            var select_list =  document.getElementById('main').getElementsByClassName('select');
+            var array_btn_main = btn_main;
+            array_btn_main = [].slice.call(array_btn_main);
+            var select_index0 = array_btn_main.indexOf(select_list[0]);
+
+            for (var j = 0 ; j < effect_table[select_index0].length ; j++) { // タイプを探索する。
                 btn_result[j].textContent = type_list[j];
                 btn_result[j].classList.remove('transparecy');
-                if(effect_table[j][defense_ID] == 2){//ダメージ2倍
+                if(effect_table[j][select_index0] == 2){//ダメージ2倍
                     btn_result[j].insertAdjacentHTML('beforeend', ' <b>○</b>');
-                } else if(effect_table[j][defense_ID] == 1){//ダメージ1倍.このときだけ色を薄くする。
+                } else if(effect_table[j][select_index0] == 1){//ダメージ1倍.このときだけ色を薄くする。
                     btn_result[j].classList.add('transparecy');
-                } else if(effect_table[j][defense_ID] == 1/2){//ダメージ1/2倍
+                } else if(effect_table[j][select_index0] == 1/2){//ダメージ1/2倍
                     btn_result[j].insertAdjacentHTML('beforeend', ' <b>△</b>');
-                } else if(effect_table[j][defense_ID] == 0){//ダメージ0倍
+                } else if(effect_table[j][select_index0] == 0){//ダメージ0倍
                     btn_result[j].insertAdjacentHTML('beforeend', ' <b>X</b>');
                 }else{
                     alert("Something wrong. Undefined damage data.");
