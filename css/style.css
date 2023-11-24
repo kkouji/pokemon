@@ -1,5 +1,5 @@
 body {
-  /*font-family:-apple-system, BlinkMacSystemFont, "Helvetica Neue", "Segoe UI","Noto Sans Japanese","ヒラギノ角ゴ ProN W3", Meiryo, sans-serif;*/
+  /*font-family:-apple-system, BlinkMacSystemFont, "Helvetica Neue", "Segoe UI","Noto Sans Japanese","ãƒ’ãƒ©ã‚®ãƒŽè§’ã‚´ ProN W3", Meiryo, sans-serif;*/
   font-family: "huiji", "eriji", "Hiragino Kaku Gothic Pro",
     "ヒラギノ角ゴ Pro W3", "メイリオ", Meiryo, "ＭＳ Ｐゴシック", sans-serif;
   /* width: 359px; */
@@ -17,13 +17,15 @@ body {
   flex-wrap: wrap;
 }
 
+.comment{font-size: 14px;}
+
 .button {
     width: 24%;
     justify-content: space-around;
     position: relative;
     display: inline-block;
     /* padding: 0.25em 0.5em; */
-    margin: 2px 2px;
+    margin: 1px 2px;
     padding: 0.2rem;
     padding-left: 1rem;
     text-decoration: none;
@@ -120,9 +122,10 @@ body {
     opacity: 0.2;
 }
 
+
 .select {
     padding: 1px;
     padding-left : -webkit-calc(1px + 1rem - 0.2rem) ;
     padding-left : calc(1px + 1rem - 0.2rem) ;
-    border: solid 0.2rem rgb(0, 225, 255);/*線色*/
-}
+    border: solid 0.2rem rgb(0, 225, 255);
+    border-image: radial-gradient(#ffffff, #000000) 49%;}
