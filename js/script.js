@@ -25,15 +25,20 @@ const effect_table = [
     [1  ,1/2,1  ,1  ,1  ,1  ,2  ,1/2,1  ,1  ,1  ,1  ,1  ,1  ,2  ,2  ,1/2,1  ], // atack faily
 ];
 
-//main buttonのリストを取得。
-var btn_main = document.getElementById('main').getElementsByClassName('button');
-//result buttonのリストを取得。
+//main buttonのリストを取得。
+var btn_main   = document.getElementById('main').getElementsByClassName('button');
+//result buttonのリストを取得。
 var btn_result = document.getElementById('result').getElementsByClassName('button');
+//reset buttonを取得
+var btn_reset  = document.getElementById('main').getElementsByClassName('btn_06');
+
 
 // ボタンの個数分ループ
 for (var i = 0 ; i < btn_main.length ; i++) {
     btnAction(btn_main[i],i);
 }
+
+btnReset(btn_reset[0]);
 
 ////// functions //////
 function btnAction(btnDOM, defense_ID) {
@@ -100,13 +105,35 @@ function btnAction(btnDOM, defense_ID) {
                 }
             }
         }else if (select_num == 0){ //タイプの選択がすべて解除されたとき
-            for (var j = 0 ; j < effect_table[defense_ID].length ; j++) { // タイプを探索する。
-                btn_result[j].textContent = type_list[j]; //デフォルトも文字列に戻す。
-                btn_result[j].classList.add('transparecy');//色を薄くする
-            }
+          resetResult();
         }else{
             alert("Something wrong. Programming Error");
         }
     })
 }
 
+
+
+// リセットボタンが押された動作
+function btnReset(btnDOM){
+  btnDOM.addEventListener("click", function () {
+    resetMain();
+    resetResult();
+  })
+}
+
+
+// mainボタンをデフォルトに戻す
+function resetMain(){
+  for (var j = 0 ; j < effect_table[0].length ; j++) { // タイプを探索する。
+    btn_main[j].classList.remove('select');//selectを外す
+    btn_main[j].classList.remove('transparecy');//色を濃くする
+  }
+}
+// 結果ボタンをデフォルトに戻す
+function resetResult(){
+  for (var j = 0 ; j < effect_table[0].length ; j++) { // タイプを探索する。
+    btn_result[j].textContent = type_list[j]; //デフォルトも文字列に戻す。
+    btn_result[j].classList.add('transparecy');//色を薄くする
+  }
+}

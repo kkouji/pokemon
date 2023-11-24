@@ -22,7 +22,11 @@ h1 {
   flex-wrap: wrap;
 }
 
-.comment{font-size: 14px;}
+.comment{
+  font-size: 14px;
+  display: flex;
+  flex-wrap: wrap;
+}
 
 .button {
     width: 24%;
@@ -133,4 +137,20 @@ h1 {
     padding-left : -webkit-calc(1px + 1rem - 0.2rem) ;
     padding-left : calc(1px + 1rem - 0.2rem) ;
     border: solid 0.2rem rgb(0, 225, 255);
-    border-image: radial-gradient(#ffffff, #000000) 49%;}
+    border-image: radial-gradient(#ffffff, #000000) 49%;
+}
+
+.btn_06 {
+	display: block;
+	text-align: center;
+	vertical-align: middle;
+	text-decoration: none;
+	/* width: 120px; */
+	margin: auto;
+	padding: 0rem 2rem;
+	font-weight: bold;
+	border-radius: 100vh;
+	border-bottom: 7px solid #b20606;
+	background: #d92727;
+	color: #fff;
+}
