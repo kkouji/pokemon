@@ -12,6 +12,11 @@ body {
     background-size: contain;
 } */
 
+h1 {
+    margin-block-start: 0.2em;
+    margin-block-end: 0.2em;
+}
+
 .flexcontainer{
   display: flex;
   flex-wrap: wrap;
