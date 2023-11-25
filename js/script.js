@@ -49,66 +49,9 @@ function btnAction(btnDOM) {
             this.classList.toggle('select');
             return false;
         }else if (select_num == 2) { //２つタイプが選ばれたときの処理。
-            var select_list =  document.getElementById('main').getElementsByClassName('select');
-            var array_btn_main = btn_main;
-            array_btn_main = [].slice.call(array_btn_main);
-            var select_index0 = array_btn_main.indexOf(select_list[0]);
-            var select_index1 = array_btn_main.indexOf(select_list[1]);
-
-            // 選択されていないボタンを薄くする。
-            for (var i = 0 ; i < btn_main.length ; i++) {
-                btn_main[i].classList.add('transparecy');
-            }
-            btn_main[select_index0].classList.remove('transparecy');
-            btn_main[select_index1].classList.remove('transparecy');
-
-            for (var j = 0 ; j < effect_table[0].length ; j++) { // タイプを探索する。
-                var damage = effect_table[j][select_index0] * effect_table[j][select_index1];
-                btn_result[j].textContent = type_list[j];
-                btn_result[j].classList.remove('transparecy');
-                if (damage == 4) {
-                    btn_result[j].insertAdjacentHTML('beforeend', ' <b>◎</b>');
-                } else if (damage == 2) {
-                    btn_result[j].insertAdjacentHTML('beforeend', ' <b>○</b>');
-                } else if (damage == 1) {
-                    btn_result[j].classList.add('transparecy');
-                } else if (damage == 1/2) {
-                    btn_result[j].insertAdjacentHTML('beforeend', ' <b>△</b>');
-                } else if (damage == 1/4) {
-                    btn_result[j].insertAdjacentHTML('beforeend', ' <b>↓</b>');
-                } else if (damage == 0) {
-                    btn_result[j].insertAdjacentHTML('beforeend', ' <b>X</b>');
-                } else {
-                    alert("Something wrong. Undefined damage data.");
-                }
-            }
-
+          updateResult();
         }else if (select_num == 1) {// 一つだけタイプが選ばれたときの処理。
-            // 選択ボタンをすべて表示する。
-            for (var i = 0 ; i < btn_main.length ; i++) {
-                btn_main[i].classList.remove('transparecy');
-            }
-
-            var select_list =  document.getElementById('main').getElementsByClassName('select');
-            var array_btn_main = btn_main;
-            array_btn_main = [].slice.call(array_btn_main);
-            var select_index0 = array_btn_main.indexOf(select_list[0]);
-
-            for (var j = 0 ; j < effect_table[select_index0].length ; j++) { // タイプを探索する。
-                btn_result[j].textContent = type_list[j];
-                btn_result[j].classList.remove('transparecy');
-                if(effect_table[j][select_index0] == 2){//ダメージ2倍
-                    btn_result[j].insertAdjacentHTML('beforeend', ' <b>○</b>');
-                } else if(effect_table[j][select_index0] == 1){//ダメージ1倍.このときだけ色を薄くする。
-                    btn_result[j].classList.add('transparecy');
-                } else if(effect_table[j][select_index0] == 1/2){//ダメージ1/2倍
-                    btn_result[j].insertAdjacentHTML('beforeend', ' <b>△</b>');
-                } else if(effect_table[j][select_index0] == 0){//ダメージ0倍
-                    btn_result[j].insertAdjacentHTML('beforeend', ' <b>X</b>');
-                }else{
-                    alert("Something wrong. Undefined damage data.");
-                }
-            }
+          updateResult();
         }else if (select_num == 0){ //タイプの選択がすべて解除されたとき
           resetResult();
         }else{
@@ -117,8 +60,6 @@ function btnAction(btnDOM) {
     })
 }
 
-
-
 // リセットボタンが押された動作
 function btnReset(btnDOM){
   btnDOM.addEventListener("click", function () {
@@ -126,7 +67,6 @@ function btnReset(btnDOM){
     resetResult();
   })
 }
-
 
 // mainボタンをデフォルトに戻す
 function resetMain(){
@@ -142,3 +82,63 @@ function resetResult(){
     btn_result[j].classList.add('transparecy');//色を薄くする
   }
 }
+
+function updateResult(){
+  //selectされているbtn_mainのindexリストを作成
+  var select_list =  document.getElementById('main').getElementsByClassName('select');
+  var array_btn_main = btn_main;
+  array_btn_main = [].slice.call(array_btn_main);
+  let select_index = [];
+  for (var j = 0 ; j < select_list.length ; j++){
+    select_index.push(array_btn_main.indexOf(select_list[j]));
+  }
+
+  // btn_main操作
+  if(select_list.length == 2){ // 2つselectされた場合選択されていないボタンを薄くする。
+    for (var i = 0 ; i < btn_main.length ; i++) {
+      if(select_index.includes(i)){
+        btn_main[i].classList.remove('transparecy');
+      } else {
+        btn_main[i].classList.add('transparecy');
+      }
+    }
+  } else if (select_list.length == 1){ // 1つselectされた場合、選択ボタンをすべて表示する。
+    for (var i = 0 ; i < btn_main.length ; i++) {
+      btn_main[i].classList.remove('transparecy');
+    }
+  }
+
+  //Result領域をリセット
+  resetResult();
+
+  //Result領域のアップデート
+  for (var j = 0 ; j < effect_table[0].length ; j++) { // タイプを探索する。
+    //ダメージ計算
+    var damage = 1;
+    for(var i = 0 ; i < select_list.length ; i++){
+      damage *= effect_table[j][select_index[i]];
+    }
+
+    if (damage == 4) {
+      btn_result[j].insertAdjacentHTML('beforeend', ' <b>◎</b>');
+      btn_result[j].classList.remove('transparecy');
+    } else if (damage == 2) {
+      btn_result[j].insertAdjacentHTML('beforeend', ' <b>○</b>');
+      btn_result[j].classList.remove('transparecy');
+    } else if (damage == 1) {
+
+    } else if (damage == 1/2) {
+      btn_result[j].insertAdjacentHTML('beforeend', ' <b>△</b>');
+      btn_result[j].classList.remove('transparecy');
+    } else if (damage == 1/4) {
+      btn_result[j].insertAdjacentHTML('beforeend', ' <b>↓</b>');
+      btn_result[j].classList.remove('transparecy');
+    } else if (damage == 0) {
+      btn_result[j].insertAdjacentHTML('beforeend', ' <b>X</b>');
+      btn_result[j].classList.remove('transparecy');
+    } else {
+      alert("Something wrong. Undefined damage data.");
+    }
+  }
+}
+
