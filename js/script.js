@@ -39,6 +39,7 @@ for (var i = 0 ; i < btn_main.length ; i++) {
 }
 
 btnReset(btn_reset[0]);
+resetResult();
 
 ////// functions //////
 function btnAction(btnDOM) {
@@ -120,21 +121,21 @@ function updateResult(){
     }
 
     if (damage == 4) {
-      btn_result[j].insertAdjacentHTML('beforeend', ' <b>◎</b>');
+      btn_result[j].insertAdjacentHTML('beforeend', ' <b>x4</b>');
       btn_result[j].classList.remove('transparecy');
     } else if (damage == 2) {
-      btn_result[j].insertAdjacentHTML('beforeend', ' <b>○</b>');
+      btn_result[j].insertAdjacentHTML('beforeend', ' <b>x2</b>');
       btn_result[j].classList.remove('transparecy');
     } else if (damage == 1) {
 
     } else if (damage == 1/2) {
-      btn_result[j].insertAdjacentHTML('beforeend', ' <b>△</b>');
+      btn_result[j].insertAdjacentHTML('beforeend', ' <b style="font-size:0.7em">x0.5</b>');
       btn_result[j].classList.remove('transparecy');
     } else if (damage == 1/4) {
-      btn_result[j].insertAdjacentHTML('beforeend', ' <b>↓</b>');
+      btn_result[j].insertAdjacentHTML('beforeend', ' <b style="font-size:0.5em">x0.25</b>');
       btn_result[j].classList.remove('transparecy');
     } else if (damage == 0) {
-      btn_result[j].insertAdjacentHTML('beforeend', ' <b>X</b>');
+      btn_result[j].insertAdjacentHTML('beforeend', ' <b>x0</b>');
       btn_result[j].classList.remove('transparecy');
     } else {
       alert("Something wrong. Undefined damage data.");
