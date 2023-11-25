@@ -20,6 +20,7 @@ h1 {
 .flexcontainer{
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-between;
 }
 
 .comment{
@@ -29,11 +30,11 @@ h1 {
 }
 
 .button {
-    width: 24%;
+    width: 27%;
     position: relative;
     display: inline-block;
     /* padding: 0.25em 0.5em; */
-    margin: 1px 2px;
+    margin: 0.5px 0px;
     padding: 0.2rem;
     padding-left: 1rem;
     text-decoration: none;
