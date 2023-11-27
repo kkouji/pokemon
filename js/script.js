@@ -125,7 +125,7 @@ function updateResult() {
 
 function search_pokemon(inputDOM) {
   inputDOM.addEventListener("input", function () {
-    var pokemon_list = document.getElementById("pokemon_list");
+    var disp_pokemon_list = document.getElementById("pokemon_list");
     var name = input_form.value;
     var pokemon_name_list = [];
     for (let index = 0; index < pokemon_table.length; index++) {
@@ -136,11 +136,16 @@ function search_pokemon(inputDOM) {
       return item.toLowerCase().includes(name.toLowerCase());
     });
 
-    pokemon_list.innerHTML = "";
+    disp_pokemon_list.innerHTML = "";
 
-    if (match_name_list.length != 1101) {
-      match_name_list.forEach(function (element) {
-        pokemon_list.insertAdjacentHTML('beforeend', element + "<br>");
+
+    if (match_name_list.length != pokemon_name_list.length) {
+      match_name_list.forEach(function (pokomen_name) {
+        var pokemon_index = pokemon_name_list.indexOf(pokomen_name);
+        var pokemon_type1 = pokemon_table[pokemon_index][pokemon_table_type1]
+        var pokemon_type2 = pokemon_table[pokemon_index][pokemon_table_type2]
+
+        disp_pokemon_list.insertAdjacentHTML('beforeend', '<div class="button">' + pokomen_name + " " + pokemon_type1 + " " + pokemon_type2 + "<br></div>");
       });
     }
   });

@@ -164,3 +164,10 @@ h1 {
     background: #d92727;
     color: #fff;
 }
+
+#search .button {
+    width: auto;
+    color: black;
+    padding: 0em 0.2em;
+    font-size: 0.5em;
+}
