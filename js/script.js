@@ -45,6 +45,7 @@ function btnReset(btnDOM) {
   btnDOM.addEventListener("click", function () {
     resetMain();
     resetResult();
+    resetInput();
   })
 }
 
@@ -61,6 +62,13 @@ function resetResult() {
     btn_result[j].textContent = type_list[j]; //デフォルトも文字列に戻す。
     btn_result[j].classList.add('transparecy');//色を薄くする
   }
+}
+
+// inputをデフォルトに戻す
+function resetInput() {
+  input_form.value = "";
+  var disp_pokemon_list = document.getElementById("pokemon_list");
+  disp_pokemon_list.innerHTML = "";
 }
 
 function updateResult() {
@@ -145,7 +153,7 @@ function search_pokemon(inputDOM) {
         var pokemon_type1 = pokemon_table[pokemon_index][pokemon_table_type1]
         var pokemon_type2 = pokemon_table[pokemon_index][pokemon_table_type2]
 
-        disp_pokemon_list.insertAdjacentHTML('beforeend', '<div class="button">' + pokomen_name + " " + pokemon_type1 + " " + pokemon_type2 + "<br></div>");
+        disp_pokemon_list.insertAdjacentHTML('beforeend', '<div class="button">' + pokomen_name + "/" + pokemon_type1 + "/" + pokemon_type2 + "<br></div>");
       });
     }
   });
