@@ -11,7 +11,7 @@ var input_form = document.getElementById("name");
 
 // 選択ボタンの初期化
 for (var i = 0; i < btn_main.length; i++) {
-  btnAction(btn_main[i], i);
+  btn_main[i].addEventListener("click", click_select )
 }
 //リセット表示の初期化
 btnReset(btn_reset[0]);
@@ -21,32 +21,32 @@ resetResult();
 search_pokemon(input_form);
 
 ////// functions //////
-function btnAction(btnDOM) {
-  btnDOM.addEventListener("click", function () {
-    this.classList.toggle('select');
-    var select_num = document.getElementById('main').getElementsByClassName('select').length;
-    if (select_num > 2) {
-      this.classList.toggle('select');
-      return false;
-    } else if (select_num == 2) { //２つタイプが選ばれたときの処理。
-      updateResult();
-    } else if (select_num == 1) {// 一つだけタイプが選ばれたときの処理。
-      updateResult();
-    } else if (select_num == 0) { //タイプの選択がすべて解除されたとき
-      resetResult();
-    } else {
-      alert("Something wrong. Programming Error");
-    }
-  })
-}
 
-// リセットボタンが押された動作
+// リセットボタンにアクション追加
 function btnReset(btnDOM) {
   btnDOM.addEventListener("click", function () {
     resetMain();
     resetResult();
     resetInput();
   })
+}
+
+//selectボタンアクション
+function click_select() {
+  this.classList.toggle('select');
+  var select_num = document.getElementById('main').getElementsByClassName('select').length;
+  if (select_num > 2) {
+    this.classList.toggle('select');
+    return false;
+  } else if (select_num == 2) { //２つタイプが選ばれたときの処理。
+    updateResult();
+  } else if (select_num == 1) {// 一つだけタイプが選ばれたときの処理。
+    updateResult();
+  } else if (select_num == 0) { //タイプの選択がすべて解除されたとき
+    resetResult();
+  } else {
+    alert("Something wrong. Programming Error");
+  }
 }
 
 // mainボタンをデフォルトに戻す
@@ -130,7 +130,6 @@ function updateResult() {
   }
 }
 
-
 function search_pokemon(inputDOM) {
   inputDOM.addEventListener("input", function () {
     var disp_pokemon_list = document.getElementById("pokemon_list");
@@ -145,7 +144,8 @@ function search_pokemon(inputDOM) {
     });
 
     disp_pokemon_list.innerHTML = "";
-    
+
+    //ポケモン選択ボタンを複数作成
     if (match_name_list.length != pokemon_name_list.length) {
       match_name_list.forEach(function (pokomen_name) {
         var pokemon_index = pokemon_name_list.indexOf(pokomen_name);
@@ -153,7 +153,22 @@ function search_pokemon(inputDOM) {
         var pokemon_type2 = pokemon_table[pokemon_index][pokemon_table_type2]
 
         disp_pokemon_list.insertAdjacentHTML('beforeend', '<div class="button">' + pokomen_name + "/" + pokemon_type1 + "/" + pokemon_type2 + "<br></div>");
+
       });
+    }
+
+    //作成したポケモン選択ボタンにアクションを追加
+    //ポケモン選択ボタンのリストを取得。
+    var btn_pokemon = document.getElementById('search').getElementsByClassName('button');
+    
+    for (var i = 0; i < btn_pokemon.length; i++) {
+      btn_pokemon[i].addEventListener("click", function (){
+        resetMain();
+        resetResult();
+        
+        //btn_mainの何番目を選択するのか
+
+      })
     }
   });
 }
