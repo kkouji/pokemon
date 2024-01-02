@@ -1,9 +1,9 @@
 ////// init //////
 
-//main buttonのリストを取得。
+//main buttonのリストを取得。jj
 var btn_main = document.getElementById('main').getElementsByClassName('button');
 //result buttonのリストを取得。
-var btn_result = document.getElementById('result').getElementsByClassName('button');
+var result_boxes = document.getElementById('new_result').getElementsByClassName('result_box');
 //reset buttonを取得
 var btn_reset = document.getElementById('main').getElementsByClassName('btn_06');
 //input_formを取得
@@ -58,10 +58,12 @@ function resetMain() {
 }
 // 結果ボタンをデフォルトに戻す
 function resetResult() {
-  for (let j = 0; j < effect_table[0].length; j++) { // タイプを探索する。
-    btn_result[j].textContent = type_list[j]; //デフォルトも文字列に戻す。
-    btn_result[j].classList.add('transparecy');//色を薄くする
-  }
+  result_boxes[0].innerHTML = "<div>x4</div>"
+  result_boxes[1].innerHTML = "<div>x2</div>"
+  result_boxes[2].innerHTML = "<div>x1</div>"
+  result_boxes[3].innerHTML = "<div>x0.5</div>"
+  result_boxes[4].innerHTML = "<div>x0.25</div>"
+  result_boxes[5].innerHTML = "<div>x0</div>"
 }
 
 // inputをデフォルトに戻す
@@ -104,27 +106,22 @@ function updateResult() {
   for (let j = 0; j < effect_table[0].length; j++) { // タイプを探索する。
     //ダメージ計算
     var damage = 1;
-    for (let i = 0; i < select_list.length; i++) {
+    for (let i = 0; i < select_list.length; i++) { // 選択されているタイプ分ダメージを走査し掛け算
       damage *= effect_table[j][select_index[i]];
     }
 
     if (damage == 4) {
-      btn_result[j].insertAdjacentHTML('beforeend', ' <b>x4</b>');
-      btn_result[j].classList.remove('transparecy');
+      result_boxes[0].insertAdjacentHTML('beforeend', '<div class="button ' + type_list[j] + '">' + type_list[j] + '<img src="image/' + type_list[j] + '.png"></div>');
     } else if (damage == 2) {
-      btn_result[j].insertAdjacentHTML('beforeend', ' <b>x2</b>');
-      btn_result[j].classList.remove('transparecy');
+      result_boxes[1].insertAdjacentHTML('beforeend', '<div class="button ' + type_list[j] + '">' + type_list[j] + '<img src="image/' + type_list[j] + '.png"></div>');
     } else if (damage == 1) {
-
+      result_boxes[2].insertAdjacentHTML('beforeend', '<div class="button ' + type_list[j] + '">' + type_list[j] + '<img src="image/' + type_list[j] + '.png"></div>');
     } else if (damage == 1 / 2) {
-      btn_result[j].insertAdjacentHTML('beforeend', ' <b>x0.5</b>');
-      btn_result[j].classList.remove('transparecy');
+      result_boxes[3].insertAdjacentHTML('beforeend', '<div class="button ' + type_list[j] + '">' + type_list[j] + '<img src="image/' + type_list[j] + '.png"></div>');
     } else if (damage == 1 / 4) {
-      btn_result[j].insertAdjacentHTML('beforeend', ' <b>x0.25</b>');
-      btn_result[j].classList.remove('transparecy');
+      result_boxes[4].insertAdjacentHTML('beforeend', '<div class="button ' + type_list[j] + '">' + type_list[j] + '<img src="image/' + type_list[j] + '.png"></div>');
     } else if (damage == 0) {
-      btn_result[j].insertAdjacentHTML('beforeend', ' <b>x0</b>');
-      btn_result[j].classList.remove('transparecy');
+      result_boxes[5].insertAdjacentHTML('beforeend', '<div class="button ' + type_list[j] + '">' + type_list[j] + '<img src="image/' + type_list[j] + '.png"></div>');
     } else {
       alert("Something wrong. Undefined damage data.");
     }

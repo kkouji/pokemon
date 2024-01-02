@@ -68,39 +68,27 @@
 
     <hr>
 
+    <!-- 結果 -->
     <section>
       <!-- <div class =comment><ruby><rb>攻撃</rb><rt>こうげき</rt>(◎４<ruby>倍<rt>ばい</rt></ruby>、◯２<ruby>倍<rt>ばい</rt></ruby>、△ 1/2、↓ 1/4、X <ruby>効果<rt>こうか</rt></ruby>なし)</ruby></div> -->
       <div class=comment><ruby>
           <rb>弱点</rb>
           <rt>じゃくてん</rt>
       </div>
-      <div id="result">
+
+      <div id="new_result">
         <div class="flexcontainer">
-          <div class="button ノーマル">ノーマル<img src="image/ノーマル.png"></div>
-          <div class="button ほのお  ">ほのお <img src="image/ほのお.png"></div>
-          <div class="button みず    ">みず <img src="image/みず.png"></div>
-          <div class="button でんき  ">でんき <img src="image/でんき.png"></div>
-          <div class="button くさ    ">くさ <img src="image/くさ.png"></div>
-          <div class="button こおり  ">こおり <img src="image/こおり.png"></div>
-          <div class="button かくとう">かくとう<img src="image/かくとう.png"></div>
-          <div class="button どく    ">どく <img src="image/どく.png"></div>
-          <div class="button じめん  ">じめん <img src="image/じめん.png"></div>
-          <div class="button ひこう  ">ひこう <img src="image/ひこう.png"></div>
-          <div class="button エスパー">エスパー<img src="image/エスパー.png"></div>
-          <div class="button むし    ">むし <img src="image/むし.png"></div>
-          <div class="button いわ    ">いわ <img src="image/いわ.png"></div>
-          <div class="button ゴースト">ゴースト<img src="image/ゴースト.png"></div>
-          <div class="button ドラゴン">ドラゴン<img src="image/ドラゴン.png"></div>
-          <div class="button あく    ">あく <img src="image/あく.png"></div>
-          <div class="button はがね  ">はがね <img src="image/はがね.png"></div>
-          <div class="button フェアリ">フェアリ<img src="image/フェアリ.png"></div>
-        </div>
+          <div class = "result_box 4bai"><div>x4</div></div>
+          <div class = "result_box 2bai"><div>x2</div></div>
+          <div class = "result_box 1bai"><div>x1</div></div>
+          <div class = "result_box 1_2bai"><div>x0.5</div></div>
+          <div class = "result_box 1_4bai"><div>x0.25</div></div>
+          <div class = "result_box 0bai"><div>x0</div></div>
       </div>
     </section>
   </article>
-  <!----- メインコンテンツ END ----->
+  <script src="./js/pokemon_list.js"></script>
+  <script src="./js/script.js"></script>
 </body>
-<script src="./js/pokemon_list.js"></script>
-<script src="./js/script.js"></script>
 
 </html>
