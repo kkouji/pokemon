@@ -9,6 +9,13 @@ var btn_reset = document.getElementById('main').getElementsByClassName('btn_06')
 //input_formを取得
 var input_form = document.getElementById("name");
 
+//全ポケモンの名前リスト生成
+var pokemon_name_list = []; //全ポケモンの名前リスト
+// ポケモンの全リストから名前リストを作る。
+for (let index = 0; index < pokemon_table.length; index++) {
+  pokemon_name_list.push(pokemon_table[index][pokemon_table_name]);
+}
+
 // 選択ボタンの初期化
 for (let i = 0; i < btn_main.length; i++) {
   btn_main[i].addEventListener("click", click_select )
@@ -133,17 +140,16 @@ function search_pokemon(inputDOM) {
   inputDOM.addEventListener("input", function () {
     var disp_pokemon_list = document.getElementById("pokemon_list"); // 検索結果を出す領域
     var name = input_form.value; //Inputフォーム
-    var pokemon_name_list = []; //全ポケモンの名前リスト
 
-    // ポケモンの全リストから名前リストを作る。
-    for (let index = 0; index < pokemon_table.length; index++) {
-      pokemon_name_list.push(pokemon_table[index][pokemon_table_name]);
-    }
+    //文字が入力されたらリセットする。
+    resetMain();
+    resetResult();
 
     // Inputフォームに一致するポケモンの名前リストを作る
     var match_name_list = pokemon_name_list.filter(function (item) {
       return item.toLowerCase().includes(name.toLowerCase());
     });
+
 
     // 結果表示を初期化
     disp_pokemon_list.innerHTML = "";
