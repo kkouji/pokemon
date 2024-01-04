@@ -170,7 +170,17 @@ function search_pokemon(inputDOM) {
         resetMain();
         resetResult();
 
-        //選択さればボタンの情報を取得j
+        //ポケモン選択ボタンを取得
+        var btns_pokemon_select = Array.from(document.getElementById('search').getElementsByClassName('button'));
+
+        btns_pokemon_select.forEach(function (btn_pokemon_select) {
+          btn_pokemon_select.classList.remove('select');
+        });
+
+        //選択されたボタンにselectクラスをaddする
+        this.classList.add('select');
+
+        //選択されたボタンの情報を取得
         var pokemon_info = this.textContent.trim().split('/');
         console.log(pokemon_info);
         var pokemon_name  = pokemon_info[0];
