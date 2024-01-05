@@ -56,10 +56,11 @@
 
     <!-- 検索領域 -->
     <section>
-      <div id = "search">
+      <div id="search">
         <div class=comment>ポケモン<ruby>
             <rb>検索</rb>
             <rt>けんさく</rt>
+          </ruby>
         </div>
         <input type="text" id="name" name="name" size="20">
         <div id="pokemon_list"></div>
@@ -74,17 +75,30 @@
       <div class=comment><ruby>
           <rb>弱点</rb>
           <rt>じゃくてん</rt>
+        </ruby>
       </div>
 
       <div id="new_result">
         <div class="flexcontainer">
-          <div class = "result_box 4bai"><div>x4</div></div>
-          <div class = "result_box 2bai"><div>x2</div></div>
-          <div class = "result_box 1bai"><div>x1</div></div>
-          <div class = "result_box 1_2bai"><div>x0.5</div></div>
-          <div class = "result_box 1_4bai"><div>x0.25</div></div>
-          <div class = "result_box 0bai"><div>x0</div></div>
-      </div>
+          <div class="result_box 4bai">
+            <div>x4</div>
+          </div>
+          <div class="result_box 2bai">
+            <div>x2</div>
+          </div>
+          <div class="result_box 1bai">
+            <div>x1</div>
+          </div>
+          <div class="result_box 1_2bai">
+            <div>x0.5</div>
+          </div>
+          <div class="result_box 1_4bai">
+            <div>x0.25</div>
+          </div>
+          <div class="result_box 0bai">
+            <div>x0</div>
+          </div>
+        </div>
     </section>
   </article>
   <script src="./js/pokemon_list.js"></script>

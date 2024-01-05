@@ -18,7 +18,7 @@ for (let index = 0; index < pokemon_table.length; index++) {
 
 // 選択ボタンの初期化
 for (let i = 0; i < btn_main.length; i++) {
-  btn_main[i].addEventListener("click", click_select )
+  btn_main[i].addEventListener("click", click_select)
 }
 //リセット表示の初期化
 btnReset(btn_reset[0]);
@@ -118,17 +118,17 @@ function updateResult() {
     }
 
     if (damage == 4) {
-      result_boxes[0].insertAdjacentHTML('beforeend', '<div class="button ' + type_list[j] + '">' + type_list[j] + '<img src="image/' + type_list[j] + '.png"></div>');
+      result_boxes[0].insertAdjacentHTML('beforeend', `<div class="button ${type_list[j]}">${type_list[j]}<img src="image/${type_list[j]}.png"></div>`);
     } else if (damage == 2) {
-      result_boxes[1].insertAdjacentHTML('beforeend', '<div class="button ' + type_list[j] + '">' + type_list[j] + '<img src="image/' + type_list[j] + '.png"></div>');
+      result_boxes[1].insertAdjacentHTML('beforeend', `<div class="button ${type_list[j]}">${type_list[j]}<img src="image/${type_list[j]}.png"></div>`);
     } else if (damage == 1) {
-      result_boxes[2].insertAdjacentHTML('beforeend', '<div class="button ' + type_list[j] + '">' + type_list[j] + '<img src="image/' + type_list[j] + '.png"></div>');
+      result_boxes[2].insertAdjacentHTML('beforeend', `<div class="button ${type_list[j]}">${type_list[j]}<img src="image/${type_list[j]}.png"></div>`);
     } else if (damage == 1 / 2) {
-      result_boxes[3].insertAdjacentHTML('beforeend', '<div class="button ' + type_list[j] + '">' + type_list[j] + '<img src="image/' + type_list[j] + '.png"></div>');
+      result_boxes[3].insertAdjacentHTML('beforeend', `<div class="button ${type_list[j]}">${type_list[j]}<img src="image/${type_list[j]}.png"></div>`);
     } else if (damage == 1 / 4) {
-      result_boxes[4].insertAdjacentHTML('beforeend', '<div class="button ' + type_list[j] + '">' + type_list[j] + '<img src="image/' + type_list[j] + '.png"></div>');
+      result_boxes[4].insertAdjacentHTML('beforeend', `<div class="button ${type_list[j]}">${type_list[j]}<img src="image/${type_list[j]}.png"></div>`);
     } else if (damage == 0) {
-      result_boxes[5].insertAdjacentHTML('beforeend', '<div class="button ' + type_list[j] + '">' + type_list[j] + '<img src="image/' + type_list[j] + '.png"></div>');
+      result_boxes[5].insertAdjacentHTML('beforeend', `<div class="button ${type_list[j]}">${type_list[j]}<img src="image/${type_list[j]}.png"></div>`);
     } else {
       alert("Something wrong. Undefined damage data.");
     }
@@ -161,7 +161,7 @@ function search_pokemon(inputDOM) {
         var pokemon_type1 = pokemon_table[pokemon_index][pokemon_table_type1]
         var pokemon_type2 = pokemon_table[pokemon_index][pokemon_table_type2]
 
-        disp_pokemon_list.insertAdjacentHTML('beforeend', '<div class="button">' + pokemon_name + "/" + pokemon_type1 + "/" + pokemon_type2 + "<br></div>");
+        disp_pokemon_list.insertAdjacentHTML('beforeend', `<div class="button">${pokemon_name}/${pokemon_type1}/${pokemon_type2}<br></div>`);
 
       });
     }
@@ -171,7 +171,7 @@ function search_pokemon(inputDOM) {
     var btn_pokemon = document.getElementById('search').getElementsByClassName('button');
 
     for (let i = 0; i < btn_pokemon.length; i++) {
-      btn_pokemon[i].addEventListener("click", function (){
+      btn_pokemon[i].addEventListener("click", function () {
         //　選択ボタン、結果ボタンを初期化
         resetMain();
         resetResult();
@@ -189,7 +189,7 @@ function search_pokemon(inputDOM) {
         //選択されたボタンの情報を取得
         var pokemon_info = this.textContent.trim().split('/');
         console.log(pokemon_info);
-        var pokemon_name  = pokemon_info[0];
+        var pokemon_name = pokemon_info[0];
         var pokemon_type1 = pokemon_info[1];
         var pokemon_type2 = pokemon_info[2];
 
@@ -199,7 +199,7 @@ function search_pokemon(inputDOM) {
 
         //type listのIndex番号から選択ボタンをselect
         btn_main[pokemon_type1_index].classList.toggle('select');
-        if(pokemon_type2_index > 0 ){
+        if (pokemon_type2_index > 0) {
           btn_main[pokemon_type2_index].classList.toggle('select');
         }
 
