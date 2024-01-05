@@ -199,7 +199,7 @@ function search_pokemon(inputDOM) {
 
         //type listのIndex番号から選択ボタンをselect
         btn_main[pokemon_type1_index].classList.toggle('select');
-        if (pokemon_type2_index > 0) {
+        if (pokemon_type2_index => 0) {
           btn_main[pokemon_type2_index].classList.toggle('select');
         }
 
