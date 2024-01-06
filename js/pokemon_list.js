@@ -31,6 +31,7 @@ const pokemon_table_name  = 1;
 const pokemon_table_type1 = 2;
 const pokemon_table_type2 = 3;
 
+//表示順を常に一定にするために、順序保証されている配列で定義する
 const pokemon_table = [
   ["0001", "フシギダネ",                               "くさ",       "どく"],
   ["0002", "フシギソウ",                               "くさ",       "どく"],
