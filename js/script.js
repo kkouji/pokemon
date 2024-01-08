@@ -5,7 +5,7 @@ let btns_main    = Array.from(document.getElementById('main').getElementsByClass
 //result buttonのリストを取得。
 let boxes_result = Array.from(document.getElementById('new_result').getElementsByClassName('result_box'));
 //reset buttonを取得
-let btn_reset    = document.getElementById('main').getElementsByClassName('btn_06');
+let btn_reset    = document.getElementById('main').getElementsByClassName('reset_button');
 //input_formを取得
 let input_form   = document.getElementById("name");
 
