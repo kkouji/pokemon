@@ -1,19 +1,14 @@
 ////// init //////
 
 //main buttonのリストを取得。
-let btns_main = Array.from(document.getElementById('main').getElementsByClassName('button'));
+let btns_main    = Array.from(document.getElementById('main').getElementsByClassName('button'));
 //result buttonのリストを取得。
 let boxes_result = Array.from(document.getElementById('new_result').getElementsByClassName('result_box'));
 //reset buttonを取得
-let btn_reset = document.getElementById('main').getElementsByClassName('btn_06');
+let btn_reset    = document.getElementById('main').getElementsByClassName('btn_06');
 //input_formを取得
-let input_form = document.getElementById("name");
+let input_form   = document.getElementById("name");
 
-//全ポケモンの名前リスト生成
-let pokemon_name_list = []; //全ポケモンの名前リスト
-for (let index = 0; index < pokemon_table.length; index++) {
-  pokemon_name_list.push(pokemon_table[index][pokemon_table_name]);
-}
 
 // 選択ボタンの初期化
 btns_main.forEach(element => {
@@ -118,13 +113,13 @@ function updateResult() {
 
     let update_index = "";
     switch (damage) {
-      case 4: update_index = 0; break;
-      case 2: update_index = 1; break;
-      case 1: update_index = 2; break;
+      case 4    : update_index = 0; break;
+      case 2    : update_index = 1; break;
+      case 1    : update_index = 2; break;
       case 1 / 2: update_index = 3; break;
       case 1 / 4: update_index = 4; break;
-      case 0: update_index = 5; break;
-      default: alert("Something wrong. Undefined damage data.");
+      case 0    : update_index = 5; break;
+      default   : alert("Something wrong. Undefined damage data.");
     }
     boxes_result[update_index].insertAdjacentHTML('beforeend', `<div class="button ${type_list[j]}">${type_list[j]}<img src="image/${type_list[j]}.png"></div>`);
   }
@@ -141,21 +136,17 @@ function addEventSerch(inputDOM) {
     resetResult();
 
     // Inputフォームに一致するポケモンの名前リストを作る
-    let match_name_list = pokemon_name_list.filter(function (item) {
-      return item.toLowerCase().includes(input_name.toLowerCase());
-    });
+    let match_pokemon_list = pokemon_table.filter(element => element.Name.toLowerCase().includes(input_name.toLowerCase()));
 
     // 結果表示を初期化
     disp_pokemon_list.innerHTML = "";
 
     //ポケモン選択ボタンを複数作成
-    if (match_name_list.length != pokemon_name_list.length) {
-      match_name_list.forEach(pokemon_name => {
-        let pokemon_index = pokemon_name_list.indexOf(pokemon_name);
-        let pokemon_type1 = pokemon_table[pokemon_index][pokemon_table_type1]
-        let pokemon_type2 = pokemon_table[pokemon_index][pokemon_table_type2]
+    if (match_pokemon_list.length != pokemon_table.length) {
+      match_pokemon_list.forEach(element => {
+        let {Name, No, Type1, Type2 } = element;
 
-        disp_pokemon_list.insertAdjacentHTML('beforeend', `<div class="button">${pokemon_name}/${pokemon_type1}/${pokemon_type2}<br></div>`);
+        disp_pokemon_list.insertAdjacentHTML('beforeend', `<div class="button">No${No} ${Name}/${Type1}/${Type2}<br></div>`);
       });
     }
 
@@ -179,7 +170,6 @@ function addEventSerch(inputDOM) {
 
         //選択されたボタンの情報を取得
         let pokemon_info = this.textContent.trim().split('/');
-        let pokemon_name = pokemon_info[0];
         let pokemon_type1 = pokemon_info[1];
         let pokemon_type2 = pokemon_info[2];
 
